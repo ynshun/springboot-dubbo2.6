@@ -1,0 +1,9 @@
+server:
+  port: 8088
+  context-path: /
+
+spring:
+  dubbo:
+    appname: consumer-managerment
+    registry: zookeeper://172.16.20.112:2181
+    protocol: dubbo

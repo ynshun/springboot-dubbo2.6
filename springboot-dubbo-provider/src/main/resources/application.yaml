@@ -1,0 +1,70 @@
+spring:
+  dubbo:
+    appname: service-test
+    registry: zookeeper://172.16.20.112:2181
+    protocol: dubbo
+    port: 20881
+
+mysql:
+  datasource:
+    readSize: 2
+    type: com.alibaba.druid.pool.DruidDataSource
+    write:
+      url: jdbc:mysql://172.16.15.116:3306/write01
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      minIdle: 5
+      maxActive: 100
+      initialSize: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 50
+      removeAbandoned: true
+      filters: stat
+    
+    read01:
+      url: jdbc:mysql://172.16.15.116:3306/read01
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      minIdle: 5
+      maxActive: 100
+      initialSize: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 50
+      removeAbandoned: true
+      filters: stat
+      
+    read02:
+      url: jdbc:mysql://172.16.15.116:3306/read02
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      minIdle: 5
+      maxActive: 100
+      initialSize: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 50
+      removeAbandoned: true
+      filters: stat
