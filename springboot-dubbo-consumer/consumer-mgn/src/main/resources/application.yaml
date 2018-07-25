@@ -7,3 +7,12 @@ spring:
     appname: consumer-managerment
     registry: zookeeper://172.16.20.112:2181
     protocol: dubbo
+    
+  thymeleaf:
+    prefix: classpath:/templates/views/
+    suffix: .html
+    mode: LEGACYHTML5
+    cache: false
+    encoding: UTF-8
+    content-type: text/html
+    cache: false

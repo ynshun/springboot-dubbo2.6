@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ynshun.system.mapper.SystemOrganizMapper">
+
+	<select id="selectChildrenByOrg" resultType="com.ynshun.common.data.MapData">
+		<choose>
+			<when test="parentId != null and parentId != ''">
+				SELECT 
+					CONCAT('role_', t1.id) as id,
+					t1.create_time,
+					t1.create_name,
+					t1.role_name as name,
+					t1.icon_skin as iconSkin,
+					1 AS isParent,
+					t1.description
+				FROM system_role t1
+				WHERE t1.deleted = 0
+				  AND t1.org_id = #{parentId}
+				
+			UNION ALL
+				SELECT
+					CONCAT('org_', t1.id) as id,
+					t1.create_time,
+					t1.create_name,
+					t1.org_name as name,
+					t1.icon_skin as iconSkin,
+					1 AS isParent,
+					t1.description
+				FROM system_organiz t1
+				WHERE t1.deleted = 0
+				  AND t1.parent_id = #{parentId}
+			</when>
+			<otherwise>
+				SELECT
+					CONCAT('org_', t1.id) as id,
+					t1.create_time,
+					t1.create_name,
+					t1.org_name as name,
+					t1.icon_skin as iconSkin,
+					(SELECT COUNT(1) > 0 FROM system_organiz WHERE parent_id = t1.id) AS isParent,
+					t1.description
+				FROM system_organiz t1
+				WHERE t1.deleted = 0
+				  AND t1.parent_id IS NULL
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectChildrenByRole" resultType="com.ynshun.common.data.MapData">
+		SELECT
+			CONCAT('emp_', t1.id) as id,
+			t1.create_time,
+			t1.create_name,
+			t1.name,
+			t1.icon_skin as iconSkin,
+			0 AS isParent,
+			t1.description
+		FROM system_employee t1
+		WHERE t1.deleted = 0
+		  AND t1.role_id = #{parentId}
+	</select>
+
+ 	
+    
+</mapper>

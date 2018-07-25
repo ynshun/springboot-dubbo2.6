@@ -1,0 +1,20 @@
+/* 公司图标（房子） */
+.ztree li span.button.company_ico_open{margin-right:2px; background: url(../css/zTreeStyle/img/diy/company_open.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.company_ico_close{margin-right:2px; background: url(../css/zTreeStyle/img/diy/company_close.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.company_ico_docu{margin-right:2px; background: url(../css/zTreeStyle/img/diy/company_open.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+/* 部门图标（公文包） */
+.ztree li span.button.briefcase_ico_open{margin-right:2px; background: url(../css/zTreeStyle/img/diy/briefcase.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.briefcase_ico_close{margin-right:2px; background: url(../css/zTreeStyle/img/diy/briefcase.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.briefcase_ico_docu{margin-right:2px; background: url(../css/zTreeStyle/img/diy/briefcase.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+/* 用户组图标（多个人） */
+.ztree li span.button.users_ico_open{margin-right:2px; background: url(../css/zTreeStyle/img/diy/users.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.users_ico_close{margin-right:2px; background: url(../css/zTreeStyle/img/diy/users.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.users_ico_docu{margin-right:2px; background: url(../css/zTreeStyle/img/diy/users.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+/* 用户图标（单个人） */
+.ztree li span.button.user_ico_open{margin-right:2px; background: url(../css/zTreeStyle/img/diy/user.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.user_ico_close{margin-right:2px; background: url(../css/zTreeStyle/img/diy/user.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.user_ico_docu{margin-right:2px; background: url(../css/zTreeStyle/img/diy/user.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+

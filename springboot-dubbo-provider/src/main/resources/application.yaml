@@ -5,6 +5,10 @@ spring:
     protocol: dubbo
     port: 20881
 
+mapper:
+  mappers: com.ynshun.common.base.mapper.BaseMapper
+
+
 mysql:
   datasource:
     readSize: 2
