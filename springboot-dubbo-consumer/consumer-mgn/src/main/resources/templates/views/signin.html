@@ -14,50 +14,40 @@
 			<header>
 				<h1>后台登录</h1>
 			</header>
-			<div class="beg-login-main">
-				<form action="/manage/login" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />
-					<div class="layui-form-item">
-						<label class="beg-login-icon">
-                        <i class="layui-icon">&#xe612;</i>
-                    </label>
-						<input type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+			<div id="loginForm" class="beg-login-main">
+				<div class="layui-form-item">
+					<label class="beg-login-icon">
+                       <i class="layui-icon">&#xe612;</i>
+                   </label>
+					<input type="text" name="username" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+				</div>
+				<div class="layui-form-item">
+					<label class="beg-login-icon">
+                       <i class="layui-icon">&#xe642;</i>
+                   </label>
+					<input type="password" name="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+				</div>
+				<div class="layui-form-item">
+					<div class="beg-pull-left beg-login-remember">
+						<label>记住帐号？</label>
+						<input type="checkbox" name="rememberme" title="记住帐号" checked>
 					</div>
-					<div class="layui-form-item">
-						<label class="beg-login-icon">
-                        <i class="layui-icon">&#xe642;</i>
-                    </label>
-						<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+					<div class="beg-pull-right">
+						<button id="loginBtn" class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe650;</i> 登录</button>
 					</div>
-					<div class="layui-form-item">
-						<div class="beg-pull-left beg-login-remember">
-							<label>记住帐号？</label>
-							<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">
-						</div>
-						<div class="beg-pull-right">
-							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
-                            <i class="layui-icon">&#xe650;</i> 登录
-                        </button>
-						</div>
-						<div class="beg-clear"></div>
-					</div>
-				</form>
+					<div class="beg-clear"></div>
+				</div>
 			</div>
 			<footer>
-				<p>Beginner © www.zhengjinfan.cn</p>
+				<p>全球华人综合服务商城 © <a href="https://www.astoreplus.com" target="_blank">元彩互娛有限公司</a></p>
 			</footer>
 		</div>
-		<script type="text/javascript" th:src="@{/static/js/plugins/layui/layui.js}"></script>
+		<script type="text/javascript" src="/static/js/plugins/jquery/2.1.1/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/plugins/require/2.1.20/require.js"></script>
+		<script type="text/javascript" src="/static/js/plugins/require/config.js"></script>
 		<script type="text/javascript">
-			layui.use(['layer', 'form'], function() {
-				var layer = layui.layer,
-					$ = layui.jquery,
-					form = layui.form();
-					
-				form.on('submit(login)',function(data){
-					
-					location.href='index.html';
-					return false;
-				});
+			require(['module/login/login'], function (login) {
+				login.init();
 			});
 		</script>
 	</body>

@@ -42,4 +42,14 @@ public class BaseService<T> implements ServiceInterface<T> {
 		baseMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public int selectCount(T entity) {
+		return baseMapper.selectCount(entity);
+	}
+
+	@Override
+	public List<T> select(T entity) {
+		return baseMapper.select(entity);
+	}
+
 }

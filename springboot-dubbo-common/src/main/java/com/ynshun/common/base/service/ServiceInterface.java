@@ -38,6 +38,28 @@ public interface ServiceInterface<T> {
 	public T addOne(T entity);
 
 	/**
+	 * 根据条件查询数据总数
+	 *
+	 * @param entity
+	 * @return
+	 * @since 2018年7月27日
+	 * @auth ynshun
+	 * @version 1.0
+	 */
+	public int selectCount(T entity);
+	
+	/**
+	 * 根据条件查询数据
+	 *
+	 * @param entity
+	 * @return
+	 * @since 2018年7月27日
+	 * @auth ynshun
+	 * @version 1.0
+	 */
+	public List<T> select(T entity);
+	
+	/**
 	 * 修改数据信息
 	 *
 	 * @param entity
@@ -47,7 +69,7 @@ public interface ServiceInterface<T> {
 	 * @version 1.0
 	 */
 	public T updateOne(T entity);
-
+	
 	/**
 	 * 删除数据信息
 	 *

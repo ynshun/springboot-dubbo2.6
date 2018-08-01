@@ -32,4 +32,16 @@ public interface SystemOrganizMapper extends BaseMapper<SystemOrganiz> {
 	 */
 	public List<MapData> selectChildrenByOrg(@Param("parentId") Integer parentId);
 	
+	/**
+	 * 分页查询子部门
+	 *
+	 * @param params
+	 * @return
+	 * @since 2018年7月25日
+	 * @auth ynshun
+	 * @version 1.0
+	 */
+	public List<MapData> selectChildrenByPage(MapData params);
+	
+	
 }

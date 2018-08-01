@@ -1,35 +1,27 @@
 var navs = [{
 	"title": "系统管理",
-	"icon": "fa-cubes",
+	"icon": "fa-cogs",
 	"spread": true,
 	"children": [{
 		"title": "组织架构",
 		"icon": "&#xe641;",
-		"href": "/system/organiz/list.html"
+		"href": "/topage/system/organiz/list.html"
 	}, {
-		"title": "按钮",
+		"title": "角色管理",
 		"icon": "&#xe641;",
-		"href": "button.html"
+		"href": "/topage/system/role/list.html"
 	}, {
-		"title": "表单",
-		"icon": "&#xe63c;",
-		"href": "form.html"
+		"title": "用户管理",
+		"icon": "&#xe641;",
+		"href": "/topage/system/employee/list.html"
 	}, {
-		"title": "表格",
-		"icon": "&#xe63c;",
-		"href": "table.html"
-	}, {
-		"title": "导航",
-		"icon": "&#xe609;",
-		"href": "nav.html"
-	}, {
-		"title": "辅助性元素",
-		"icon": "&#xe60c;",
-		"href": "auxiliar.html"
+		"title": "资源管理",
+		"icon": "&#xe641;",
+		"href": "/topage/system/resources/list.html"
 	}]
 }, {
 	"title": "组件",
-	"icon": "fa-cogs",
+	"icon": "fa-cubes",
 	"spread": false,
 	"children": [{
 		"title": "BTable",

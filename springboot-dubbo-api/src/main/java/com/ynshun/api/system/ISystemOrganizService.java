@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ynshun.common.base.service.ServiceInterface;
 import com.ynshun.common.data.MapData;
+import com.ynshun.common.data.result.DatatableResult;
 import com.ynshun.common.domain.system.SystemOrganiz;
 
 public interface ISystemOrganizService extends ServiceInterface<SystemOrganiz> {
@@ -29,5 +30,19 @@ public interface ISystemOrganizService extends ServiceInterface<SystemOrganiz> {
 	 * @version 1.0
 	 */
 	public List<MapData> selectChildrenByOrg(Integer parentId);
+	
+	/**
+	 * 分页查询组织架构
+	 *
+	 * @param page
+	 * @param pagesize
+	 * @param params[org_name, parent_id]
+	 * @return
+	 * @since 2018年7月25日
+	 * @auth ynshun
+	 * @version 1.0
+	 */
+	public DatatableResult getNodesByPage(Integer start, Integer pagesize, MapData params);
+	
 
 }

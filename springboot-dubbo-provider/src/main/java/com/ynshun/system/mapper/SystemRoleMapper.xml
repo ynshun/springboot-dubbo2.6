@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ynshun.system.mapper.SystemRoleMapper">
+
+	<select id="query" resultType="com.ynshun.common.data.MapData">
+		SELECT role.*, org.full_org_name AS org_name FROM system_role role
+			LEFT JOIN (
+				WITH RECURSIVE t AS (
+					SELECT id, org_name, CONCAT('/', org_name) AS full_org_name, IFNULL(parent_id, '') AS parent_id FROM system_organiz WHERE parent_id IS NULL
+					UNION
+					SELECT a.id, a.org_name, CONCAT(t.full_org_name, '/', a.org_name) AS full_org_name, a.parent_id FROM system_organiz a, t WHERE a.parent_id = t.id
+				)SELECT t.* FROM t) org ON org.id = role.org_id
+			WHERE 1 = 1
+			<if test="role_name != null and role_name != ''">
+				AND role.`role_name` LIKE CONCAT('%', #{role_name}, '%')
+			</if>
+			<if test="org_id != null and org_id != ''">
+				AND role.org_id IN (
+					WITH RECURSIVE t AS (
+						SELECT id FROM system_organiz WHERE id = #{org_id}
+						UNION
+						SELECT a.id FROM system_organiz a, t WHERE a.parent_id = t.id
+					) 
+					SELECT t.id FROM t
+				)
+			</if>
+	</select>
+</mapper>

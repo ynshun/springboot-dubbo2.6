@@ -18,6 +18,7 @@
 				  AND t1.org_id = #{parentId}
 				
 			UNION ALL
+			
 				SELECT
 					CONCAT('org_', t1.id) as id,
 					t1.create_time,
@@ -60,6 +61,21 @@
 		  AND t1.role_id = #{parentId}
 	</select>
 
- 	
-    
+
+	<select id="selectChildrenByPage" resultType="com.ynshun.common.data.MapData">
+ 		WITH RECURSIVE t AS (
+			SELECT id, deleted, org_name, CONCAT('/', org_name) AS full_org_name, IFNULL(parent_id, '') AS parent_id FROM system_organiz WHERE parent_id IS NULL
+			UNION
+			SELECT a.id, a.deleted, a.org_name, CONCAT(t.full_org_name, '/', a.org_name) AS full_org_name, a.parent_id FROM system_organiz a, t WHERE a.parent_id = t.id
+		)
+		SELECT t.*, IFNULL(tbl.org_name, '') AS parent_name FROM t
+		LEFT JOIN system_organiz tbl ON t.parent_id = tbl.id
+		WHERE t.deleted = 0
+		<if test="parent_id != null and parent_id != ''">
+			AND (t.parent_id = #{parent_id} OR t.id = #{parent_id})
+		</if>
+		<if test="org_name != null and org_name != ''">
+			AND t.org_name LIKE CONCAT('%', #{org_name}, '%')
+		</if>
+    </select>
 </mapper>

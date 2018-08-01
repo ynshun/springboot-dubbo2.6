@@ -15,7 +15,7 @@
 			<artifactId>springboot-dubbo-api</artifactId>
 			<version>0.0.1</version>
 		</dependency>
-		
+
 		<!-- thymeleaf 视图组件依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,6 +27,18 @@
 			<artifactId>nekohtml</artifactId>
 		</dependency>
 
-		
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+
+
 	</dependencies>
 </project>

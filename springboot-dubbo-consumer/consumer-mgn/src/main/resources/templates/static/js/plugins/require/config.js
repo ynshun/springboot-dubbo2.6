@@ -3,17 +3,13 @@ requirejs.config({
     baseUrl: '/static/js/',
     waitSeconds:0,
     paths: {
-        //基础库
-        'jquery'                    : 'component/jquery/1.11.1/jquery',                                 //IE6+
-        'jquery2'                   : 'component/jquery/2.1.1/jquery',                                  //IE9+
-
+        'layer'                     : 'plugins/layer/2.4.0/layer',
     },
 
     shim : {
-        'iscroll': {
-            exports: 'IScroll'
+    	'layer': {
+            deps: ['css!plugins/layer/2.4.0/skin/layer']
         },
-
         'laydate': {
             exports: 'laydate',
             deps:['css!component/laydate/1.1.0/need/laydate']
