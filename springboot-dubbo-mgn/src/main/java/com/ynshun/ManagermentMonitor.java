@@ -1,12 +1,12 @@
 package com.ynshun;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+import com.ynshun.config.RootConfiguration;
+
 public class ManagermentMonitor {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ManagermentMonitor.class, args);
+		SpringApplication.run(RootConfiguration.class, args);
 	}
 }

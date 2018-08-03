@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ynshun</groupId>
-		<artifactId>springboot-dubbo-consumer</artifactId>
+		<artifactId>springboot-dubbo2.6</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>consumer-mgn</artifactId>
+	<artifactId>springboot-dubbo-mgn</artifactId>
 
 	<dependencies>
 		<!-- API -->

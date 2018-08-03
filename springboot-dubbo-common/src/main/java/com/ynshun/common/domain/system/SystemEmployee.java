@@ -15,7 +15,7 @@ public class SystemEmployee extends BaseEntity {
 	private String loginname;
 
 	// 登录密码
-	private Integer loginpwd;
+	private String loginpwd;
 
 	// 角色ID
 	private Integer role_id;
@@ -42,11 +42,11 @@ public class SystemEmployee extends BaseEntity {
 		this.loginname = loginname;
 	}
 
-	public Integer getLoginpwd() {
+	public String getLoginpwd() {
 		return loginpwd;
 	}
 
-	public void setLoginpwd(Integer loginpwd) {
+	public void setLoginpwd(String loginpwd) {
 		this.loginpwd = loginpwd;
 	}
 

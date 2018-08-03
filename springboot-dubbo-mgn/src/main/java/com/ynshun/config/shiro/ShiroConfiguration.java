@@ -14,22 +14,22 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ShiroConfiguration {
-	
+
 	@Bean(name = "shiroFilter")
 	public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") SecurityManager manager) {
 		ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
 		bean.setSecurityManager(manager);
-		bean.setLoginUrl("/login");
+		bean.setLoginUrl("/login.html");
 		bean.setSuccessUrl("/");
-		
+
 		// 配置访问权限
 		LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 		filterChainDefinitionMap.put("/static/**", "anon"); // 静态资源随意访问
 		filterChainDefinitionMap.put("/ajax/doLogin", "anon"); // 登录接口随意访问
-		
+
 		filterChainDefinitionMap.put("/logout*", "anon");
 		filterChainDefinitionMap.put("/signout*", "anon"); // 注销接口随意访问
-		
+
 		filterChainDefinitionMap.put("/jsp/error.jsp*", "anon");
 		filterChainDefinitionMap.put("/jsp/index.jsp*", "authc");
 		filterChainDefinitionMap.put("/*", "authc");// 表示需要认证才可以访问
@@ -75,9 +75,11 @@ public class ShiroConfiguration {
 	}
 
 	@Bean
-	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("securityManager") SecurityManager manager) {
+	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(
+			@Qualifier("securityManager") SecurityManager manager) {
 		AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
 		advisor.setSecurityManager(manager);
 		return advisor;
 	}
+	
 }

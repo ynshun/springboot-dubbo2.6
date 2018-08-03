@@ -12,26 +12,29 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.stereotype.Component;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.ynshun.api.system.ISystemEmployeeService;
 import com.ynshun.common.domain.system.SystemEmployee;
+import com.ynshun.config.spring.DubboBeanFactory;
 
-@Component
 public class AuthRealm extends AuthorizingRealm {
-	@Reference
-	private ISystemEmployeeService employeeService;
-	
+
 	/**
 	 * 认证.登录
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		UsernamePasswordToken utoken = (UsernamePasswordToken) token;
-		String loginname = utoken.getUsername();
-		SystemEmployee user = employeeService.selectByLoginname(loginname);
-		return new SimpleAuthenticationInfo(user, user.getLoginpwd(), this.getClass().getName());
+		try {
+			UsernamePasswordToken utoken = (UsernamePasswordToken) token;
+			String loginname = utoken.getUsername();
+
+			ISystemEmployeeService employeeService = DubboBeanFactory.getDubboService(ISystemEmployeeService.class);
+			SystemEmployee user = employeeService.selectByLoginname(loginname);
+			
+			return new SimpleAuthenticationInfo(user, user.getLoginpwd(), this.getClass().getName());
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	/**
@@ -40,19 +43,20 @@ public class AuthRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
 		// 获取session中的用户
-//		SystemEmployee user = (SystemEmployee) principal.fromRealm(this.getClass().getName()).iterator().next();
+		// SystemEmployee user = (SystemEmployee)
+		// principal.fromRealm(this.getClass().getName()).iterator().next();
 		List<String> permissions = new ArrayList<>();
-//		Set<Role> roles = user.getRoles();
-//		if (roles.size() > 0) {
-//			for (Role role : roles) {
-//				Set<Module> modules = role.getModules();
-//				if (modules.size() > 0) {
-//					for (Module module : modules) {
-//						permissions.add(module.getMname());
-//					}
-//				}
-//			}
-//		}
+		// Set<Role> roles = user.getRoles();
+		// if (roles.size() > 0) {
+		// for (Role role : roles) {
+		// Set<Module> modules = role.getModules();
+		// if (modules.size() > 0) {
+		// for (Module module : modules) {
+		// permissions.add(module.getMname());
+		// }
+		// }
+		// }
+		// }
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.addStringPermissions(permissions);
 		return info;

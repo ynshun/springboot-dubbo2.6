@@ -21,7 +21,7 @@ import com.ynshun.common.domain.system.SystemEmployee;
 import com.ynshun.common.domain.system.SystemOrganiz;
 import com.ynshun.common.domain.system.SystemRole;
 import com.ynshun.common.util.TypeUtil;
-import com.ynshun.config.MemoryCache;
+import com.ynshun.config.cache.MemoryCache;
 
 @Controller
 @RequestMapping("/system/organiz/")

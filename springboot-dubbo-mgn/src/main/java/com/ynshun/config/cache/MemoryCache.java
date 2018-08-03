@@ -1,4 +1,4 @@
-package com.ynshun.config;
+package com.ynshun.config.cache;
 
 import com.ynshun.common.domain.system.SystemEmployee;
 
